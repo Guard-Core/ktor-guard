@@ -1,0 +1,38 @@
+# Minimal overrides on top of detekt's default rule set (buildUponDefaultConfig = true).
+build:
+  maxIssues: 0
+
+# Overrides driven by the adapter surface. Each relaxation names the reason; anything not
+# listed stays at detekt's default.
+complexity:
+  LongParameterList:
+    # The decorator surface mirrors the facade SecurityDecorator factories 1:1
+    # (detection_exclusion alone takes five optional sets; the facade signature is the port
+    # surface), and the plugin hook handlers carry the dispatch-chain context objects.
+    active: false
+  TooManyFunctions:
+    # GuardRouteDecorator.kt mirrors one facade class (25 factories, each with a bound receiver
+    # and a Route extension); GuardCoreMiddleware mirrors the reference adapter's
+    # SecurityMiddleware member surface.
+    thresholdInFiles: 60
+    thresholdInClasses: 40
+    thresholdInInterfaces: 60
+    thresholdInObjects: 60
+
+style:
+  ReturnCount:
+    # The dispatch chain mirrors the reference adapter's dispatch(): one early return per
+    # branch of the request lifecycle (init failure, preflight, passthrough, bypass, block).
+    active: false
+  LoopWithTooManyJumpStatements:
+    # The header merge loops skip engine-managed names and existing values in one pass.
+    active: false
+  MagicNumber:
+    # Ports and byte-read bounds read clearer inline (read caps, ports, status codes).
+    active: false
+
+exceptions:
+  TooGenericExceptionCaught:
+    # The framework-boundary catch-and-degrade paths mirror the reference adapter
+    # (`_safe_read` -> null, route-resolution fallback, replay-install fallback).
+    active: false
