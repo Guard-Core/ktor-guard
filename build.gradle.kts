@@ -19,15 +19,25 @@ repositories {
 
 dependencies {
   implementation(libs.kotlin.stdlib)
+  implementation(libs.kotlinx.coroutines.core)
   implementation(libs.ktor.server.core)
 
-  // The engine dependency (com.guardcore:guard-core:4.3.2) lands in W6 when
-  // the engine artifact is on Maven Central.
-  testImplementation(kotlin("test"))
+  // The engine (facade): resolved from the guard-core-jvm included build via
+  // dependency substitution (see settings.gradle.kts). ktor-guard wires the
+  // facade only; no security logic lives here.
+  api(libs.guard.core)
+
+  testImplementation(libs.ktor.server.test.host)
+  testImplementation(libs.kotlin.test)
 }
 
 tasks.test {
   useJUnitPlatform()
+  testLogging {
+    events("failed")
+    exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+    showStandardStreams = true
+  }
 }
 
 spotless {
@@ -41,7 +51,8 @@ spotless {
 
 detekt {
   buildUponDefaultConfig = true
+  config.setFrom(project.file("detekt.yml"))
 }
 
-// The JaCoCo coverage gate lands with real code in a later milestone. The
-// plugin is applied now so reports exist from the first real classes on.
+// JaCoCo reports exist from the first real classes on; the coverage gate
+// lands with the family quality-gate milestone.
