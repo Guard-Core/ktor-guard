@@ -1,0 +1,28 @@
+site_name: ktor-guard
+site_description: Application-layer security plugin for Ktor 3.x, powered by the guard-core-jvm detection engine
+site_author: Renn F
+repo_url: https://github.com/Guard-Core/ktor-guard
+repo_name: Guard-Core/ktor-guard
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: deep purple
+      accent: amber
+  features:
+    - content.code.copy
+    - navigation.sections
+
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - tables
+
+nav:
+  - Home: index.md
+  - Installation: installation.md
+  - API: api.md
+  - Examples: examples.md
