@@ -25,6 +25,9 @@ with an explicit message.
 - [ ] `build.gradle.kts`: `version = "1.0.0-SNAPSHOT"` -> `version = "1.0.0"`.
 - [ ] `gradle/libs.versions.toml`: `guardCore` still reads the lockstep engine
       version (`4.3.2`).
+- [ ] The `GUARD_CORE_JVM_REF` pin (ci.yml env + settings comments) already
+      points at the released engine SHA (bumped at train time, per the
+      family spec).
 - [ ] `CHANGELOG.md`: the unreleased section renamed to
       `## [1.0.0] - YYYY-MM-DD` with the engine pin stated.
 - [ ] CI green on the release PR; merge it; tag the merge commit.
@@ -64,9 +67,10 @@ mechanically, not on the honor system).
    the php v4.3.1 lesson).
 2. repo1 answers 200 for the artifact (the same check the workflow uses).
 3. No deployment left VALIDATED/PENDING in the Portal.
-4. After the train: the `GUARD_CORE_JVM_REF` pin (ci.yml env + settings
-   comments) moves to the released engine tag SHA in the next regular
-   development PR.
+4. The `GUARD_CORE_JVM_REF` pin (ci.yml env + settings comments) moves to
+   the released engine SHA AT TRAIN TIME, before the consumer tags: the
+   adapter's at-tag tests must run against the engine that actually ships
+   (the family spec pins this; a pin bump is an ordinary development PR).
 
 ## Rerun safety, failure recovery, rollback
 
