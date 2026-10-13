@@ -3,6 +3,13 @@
 All notable changes to this project are documented in this file. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## Unreleased
+
+### Changed
+
+- Dependencies: netty is pinned to 4.1.139.Final through `platform(io.netty:netty-bom)`. lettuce-core 6.8.2 declares netty 4.1.125, which carries twelve advisories fixed by 4.1.137 at the latest. The pin is declared here as well as in the guard-core-jvm facade, so this lockfile stays the same whichever engine revision the build resolves. All twelve netty osv-scanner suppressions are removed.
+- Two stale code comments that said the guard-agent-jvm artifact "ships in W7" now describe the injected `agentHandler` (`GuardCorePlugin.kt`, `GuardCoreMiddleware.kt`).
+
 ## [1.0.0] - 2026-10-13
 
 ### Changed (release train)

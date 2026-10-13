@@ -3,6 +3,7 @@ kotlin = "2.4.21"
 coroutines = "1.11.0"
 ktor = "3.6.0"
 guardCore = "4.3.3"
+netty = "4.1.139.Final"
 spotless = "8.10.4"
 detekt = "1.23.8"
 
@@ -10,6 +11,7 @@ detekt = "1.23.8"
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 guard-core = { module = "com.guard-core:guard-core", version.ref = "guardCore" }
+netty-bom = { module = "io.netty:netty-bom", version.ref = "netty" }
 ktor-server-core = { module = "io.ktor:ktor-server-core", version.ref = "ktor" }
 ktor-server-test-host = { module = "io.ktor:ktor-server-test-host", version.ref = "ktor" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }

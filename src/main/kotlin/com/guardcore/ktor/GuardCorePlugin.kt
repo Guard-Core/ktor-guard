@@ -59,7 +59,7 @@ public class GuardCorePluginConfig {
    */
   public var decorator: GuardRouteDecorator? = null
 
-  /** The guard-agent-jvm handler; the agent family artifact ships in W7. */
+  /** The guard-agent-jvm handler, e.g. `GuardAgentTelemetry(agent)` from guard-agent-jvm. */
   public var agentHandler: AgentHandlerProtocol? = null
 
   /**
