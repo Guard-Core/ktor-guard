@@ -574,13 +574,13 @@
 packages stay <code>com.guardcore.*</code>.</p>
 <h2 id="engine-dependency-includebuild-dependency-substitution">Engine dependency (includeBuild + dependency substitution)</h2>
 <p>Consumers resolve the engine artifact <code>com.guard-core:guard-core</code> from Maven Central. This repository's own build pins the engine from source instead: CI and
-local builds check out <code>Guard-Core/guard-core-jvm</code> at the pinned ref <code>2415a77</code>
+local builds check out <code>Guard-Core/guard-core-jvm</code> at the pinned ref <code>9067b7b</code>
 as the sibling directory <code>./guard-core-jvm</code>, and <code>settings.gradle.kts</code>
 substitutes the declared coordinates with the included build's projects. The
 declared dependency coordinates stay <code>com.guard-core:guard-core:4.3.3</code>
 (lockstep version per the family versioning law).</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Guard-Core/guard-core-jvm.git<span class="w"> </span>guard-core-jvm
-git<span class="w"> </span>-C<span class="w"> </span>guard-core-jvm<span class="w"> </span>checkout<span class="w"> </span>2415a77
+git<span class="w"> </span>-C<span class="w"> </span>guard-core-jvm<span class="w"> </span>checkout<span class="w"> </span>9067b7b
 ./gradlew<span class="w"> </span>build
 </code></pre></div>
 <p>The engine directory resolves in order: <code>-PguardCoreJvmDir=&lt;path&gt;</code>,
