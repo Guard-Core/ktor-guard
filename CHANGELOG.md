@@ -7,6 +7,7 @@ All notable changes to this project are documented in this file. The format foll
 
 ### Changed
 
+- The pinned guard-core-jvm engine ref moves to 9067b7b, which fixes the agent telemetry wiring (Guard-Core/guard-core-jvm#48): an injected guard-agent-jvm handler was never added to the engine composite, so it was never started and received no events, and metrics travelled as events. A new `InjectedAgentWiringTest` covers the injected handler end to end (start, events, metrics, stop).
 - Dependencies: netty is pinned to 4.1.139.Final through `platform(io.netty:netty-bom)`. lettuce-core 6.8.2 declares netty 4.1.125, which carries twelve advisories fixed by 4.1.137 at the latest. The pin is declared here as well as in the guard-core-jvm facade, so this lockfile stays the same whichever engine revision the build resolves. All twelve netty osv-scanner suppressions are removed.
 - Two stale code comments that said the guard-agent-jvm artifact "ships in W7" now describe the injected `agentHandler` (`GuardCorePlugin.kt`, `GuardCoreMiddleware.kt`).
 
