@@ -565,8 +565,7 @@
   <code>redis://localhost:6379</code>)</li>
 </ul>
 <h2 id="coordinates">Coordinates</h2>
-<p>Not published yet: the first artifact ships with the 1.0.0 release. Until
-then, build from source (below). Once released:</p>
+<p>Published on Maven Central:</p>
 <div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">"com.guard-core:ktor-guard:1.0.0"</span><span class="p">)</span>
 <span class="p">}</span>
@@ -574,8 +573,7 @@ then, build from source (below). Once released:</p>
 <p>The group ID is <code>com.guard-core</code> (the Central Portal namespace); Kotlin
 packages stay <code>com.guardcore.*</code>.</p>
 <h2 id="engine-dependency-includebuild-dependency-substitution">Engine dependency (includeBuild + dependency substitution)</h2>
-<p>The engine artifact <code>com.guard-core:guard-core</code> is not on Maven Central until
-the family's first release, so the build pins the engine from source: CI and
+<p>Consumers resolve the engine artifact <code>com.guard-core:guard-core</code> from Maven Central. This repository's own build pins the engine from source instead: CI and
 local builds check out <code>Guard-Core/guard-core-jvm</code> at the pinned ref <code>2415a77</code>
 as the sibling directory <code>./guard-core-jvm</code>, and <code>settings.gradle.kts</code>
 substitutes the declared coordinates with the included build's projects. The
