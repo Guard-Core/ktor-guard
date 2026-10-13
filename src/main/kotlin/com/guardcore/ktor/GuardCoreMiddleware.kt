@@ -59,7 +59,7 @@ public class GuardCoreMiddleware(
     /** The user-held per-route decorator adopted by this middleware (may be null). */
     public val decorator: GuardRouteDecorator?,
     /**
-     * An externally supplied agent handler (guard-agent-jvm); null until the agent family ships.
+     * An externally supplied agent handler (guard-agent-jvm); null when none is installed.
      */
     public val injectedAgentHandler: AgentHandlerProtocol?,
 ) : GuardMiddlewareProtocol {
