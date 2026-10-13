@@ -26,7 +26,7 @@ packages stay `com.guardcore.*`.
 
 The engine artifact `com.guard-core:guard-core` is not on Maven Central until
 the family's first release, so the build pins the engine from source: CI and
-local builds check out `Guard-Core/guard-core-jvm` at the pinned ref `5f4ea56`
+local builds check out `Guard-Core/guard-core-jvm` at the pinned ref `2415a77`
 as the sibling directory `./guard-core-jvm`, and `settings.gradle.kts`
 substitutes the declared coordinates with the included build's projects. The
 declared dependency coordinates stay `com.guard-core:guard-core:4.3.3`
@@ -34,7 +34,7 @@ declared dependency coordinates stay `com.guard-core:guard-core:4.3.3`
 
 ```bash
 git clone https://github.com/Guard-Core/guard-core-jvm.git guard-core-jvm
-git -C guard-core-jvm checkout 5f4ea56
+git -C guard-core-jvm checkout 2415a77
 ./gradlew build
 ```
 

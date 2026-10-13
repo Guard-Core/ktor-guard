@@ -8,7 +8,7 @@ for blocked requests.
 git clone https://github.com/Guard-Core/ktor-guard.git
 cd ktor-guard
 git clone https://github.com/Guard-Core/guard-core-jvm.git guard-core-jvm
-git -C guard-core-jvm checkout 5f4ea56
+git -C guard-core-jvm checkout 2415a77
 docker run -d -p 6379:6379 redis:7-alpine
 ./gradlew :examples:demo-ktor:run
 ```
