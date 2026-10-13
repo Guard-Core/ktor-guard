@@ -3,7 +3,14 @@
 All notable changes to this project are documented in this file. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## [1.0.0-SNAPSHOT] - unreleased
+## [1.0.0] - 2026-10-13
+
+### Changed (release train)
+
+- First Maven Central release (`com.guard-core:ktor-guard:1.0.0`) against guard-core-jvm 4.3.3.
+- Dependencies: the facade's lettuce-core moves to 6.8.2.RELEASE (netty 4.1.125) and slf4j-api to 2.0.20, lockfile regenerated; the osv-scanner suppression GHSA-3p8m-j85q-pgmj is removed (fixed in netty 4.1.125).
+- Dependency locking ignores the family's own `com.guard-core:*` artifacts. The release publish job resolves the engine from Maven Central instead of the composite build, and those modules were absent from the lock state, so the publish build failed lock validation.
+- The pinned guard-core-jvm engine ref moves to the 4.3.3 release commit.
 
 ### Changed (W10, the 8.1.0 parity assessment + the engine-pin sync; nothing released)
 

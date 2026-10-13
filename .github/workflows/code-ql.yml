@@ -11,7 +11,7 @@ permissions: {}
 env:
   # The engine ref ktor-guard pins (mirrors ci.yml; settings.gradle.kts builds the engine
   # from source, so the composite build needs the sibling checkout during analysis).
-  GUARD_CORE_JVM_REF: 5f4ea56ab026f00313dfd840ab7d05757afb6400
+  GUARD_CORE_JVM_REF: 2415a77b35f99dbaa96ad821b7ef4571992e18f4
 
 jobs:
   code-ql:

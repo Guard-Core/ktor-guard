@@ -13,9 +13,9 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  # The engine ref ktor-guard pins (lockstep 4.3.2; settings.gradle.kts builds it from
+  # The engine ref ktor-guard pins (lockstep 4.3.3; settings.gradle.kts builds it from
   # source). Bump this and the settings comment together with a facade upgrade.
-  GUARD_CORE_JVM_REF: 5f4ea56ab026f00313dfd840ab7d05757afb6400
+  GUARD_CORE_JVM_REF: 2415a77b35f99dbaa96ad821b7ef4571992e18f4
 
 jobs:
   build:
@@ -30,7 +30,7 @@ jobs:
         with:
           persist-credentials: false
 
-      # The engine dependency (com.guardcore:guard-core:4.3.2) is built from source through
+      # The engine dependency (com.guard-core:guard-core:4.3.3) is built from source through
       # the composite build wired in settings.gradle.kts; CI checks it out as a sibling.
       - name: Checkout guard-core-jvm engine (pinned)
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
