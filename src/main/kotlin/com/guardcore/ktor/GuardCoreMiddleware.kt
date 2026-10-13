@@ -161,9 +161,9 @@ public class GuardCoreMiddleware(
     behavioralProcessor = contexts.behavioralProcessor
 
     if (config.enableAgent && injectedAgentHandler == null) {
-      // The guard-agent-jvm artifact ships in W7 (specs/impl/jvm.md family table); until it
-      // lands, an injected handler is the only agent source. Mirror the reference
-      // `_on_agent_init_failed` degrade path (middleware.py:301).
+      // The adapter never builds the agent itself: an injected guard-agent-jvm handler is the
+      // only agent source. Mirror the reference `_on_agent_init_failed` degrade path
+      // (middleware.py:301).
       val exc =
           IllegalStateException(
               "Agent enabled but no agent handler was provided. Install guard-agent-jvm and " +

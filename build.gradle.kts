@@ -43,6 +43,7 @@ dependencies {
   // repositories in composite-OFF (release) mode. ktor-guard wires the
   // facade only; no security logic lives here.
   api(libs.guard.core)
+  implementation(platform(libs.netty.bom))
 
   testImplementation(libs.ktor.server.test.host)
   testImplementation(libs.kotlin.test)
