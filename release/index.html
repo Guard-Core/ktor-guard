@@ -343,6 +343,33 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../adapter-parity-8.1.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parity notes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -454,7 +481,7 @@ This file covers what differs here.</p>
 <li>Artifact <code>com.guard-core:ktor-guard</code>; version <code>1.0.0</code> (fresh family
   version). The version lives in <code>build.gradle.kts</code>; the tag must equal it.</li>
 <li>The engine lockstep pin lives in <code>gradle/libs.versions.toml</code> (<code>guardCore =
-  "4.3.2"</code>) and in the workflow env (<code>GUARD_CORE_JVM_REF</code>); they move only
+  "4.3.3"</code>) and in the workflow env (<code>GUARD_CORE_JVM_REF</code>); they move only
   when the engine train moves.</li>
 <li>Tags are bare <code>vX.Y.z</code> only (<code>v1.0.0</code>). The <code>tag-consistency</code> job audits
   this (the guard-core-rs invisible-rule incident on <code>refs/tags/v4.3.2</code> is
@@ -467,7 +494,7 @@ with an explicit message.</p>
 <ul>
 <li>[ ] <code>build.gradle.kts</code>: <code>version = "1.0.0-SNAPSHOT"</code> -&gt; <code>version = "1.0.0"</code>.</li>
 <li>[ ] <code>gradle/libs.versions.toml</code>: <code>guardCore</code> still reads the lockstep engine
-      version (<code>4.3.2</code>).</li>
+      version (<code>4.3.3</code>).</li>
 <li>[ ] The <code>GUARD_CORE_JVM_REF</code> pin (ci.yml env + settings comments) already
       points at the released engine SHA (bumped at train time, per the
       family spec).</li>
