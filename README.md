@@ -32,7 +32,7 @@ it wraps Ktor `ApplicationCall` into the guard-core-jvm facade protocols and dri
 security pipeline per request through suspend-native Ktor server plugin hooks. It contains no
 security logic of its own; every decision is the engine's.
 
-- Engine: `com.guard-core:guard-core:4.3.2` (built from source through a composite build, see
+- Engine: `com.guard-core:guard-core:4.3.3` (built from source through a composite build, see
   [Engine dependency](#engine-dependency)).
 - Ktor 3.x (built and tested against 3.6.0), Kotlin 2.4.21, JDK 17, suspend-native: the facade's
   suspend APIs are called directly (no runBlocking bridges on this adapter).
@@ -161,7 +161,7 @@ ktor-guard contains no security logic; the engine lives in
 [Guard-Core/guard-core-jvm](https://github.com/Guard-Core/guard-core-jvm) and is built from
 source through a composite build (`includeBuild` + dependency substitution in
 `settings.gradle.kts`, the Gradle analog of the Rust path+version pattern). Declared coordinates
-stay `com.guard-core:guard-core:4.3.2` (lockstep with the guard-core 4.3.2 release); substitution
+stay `com.guard-core:guard-core:4.3.3` (lockstep with the guard-core 4.3.3 release); substitution
 redirects them to the included build until the artifacts publish to Maven Central.
 
 CI checks the engine out at the pinned ref as a sibling (`path: guard-core-jvm`); locally use
@@ -175,6 +175,11 @@ git clone https://github.com/Guard-Core/guard-core-jvm ../guard-core-jvm
 Set `GUARD_CORE_USE_COMPOSITE=false` to build without the composite: the declared coordinates
 then resolve from the repositories (mavenLocal first, then Maven Central) - this is how the
 release workflow proves the published artifact graph (docs/release.md).
+
+Adapter parity with the reference middleware releases is assessed per upstream feature release:
+[docs/adapter-parity-8.1.0.md](docs/adapter-parity-8.1.0.md) maps fastapi-guard 8.1.0's
+`PureASGISecurityMiddleware` onto this adapter's Ktor server-plugin hooks (all three
+pure-streaming properties hold natively; zero code changes).
 
 ## Development
 

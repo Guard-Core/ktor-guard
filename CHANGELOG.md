@@ -5,6 +5,11 @@ All notable changes to this project are documented in this file. The format foll
 
 ## [1.0.0-SNAPSHOT] - unreleased
 
+### Changed (W10, the 8.1.0 parity assessment + the engine-pin sync; nothing released)
+
+- fastapi-guard 8.1.0 parity: the PureASGI idiom maps to this adapter's native Ktor server-plugin hooks (the Plugins-phase `Hook` with `finish()` short-circuit on the request side, `ResponseBodyReadyForSend` on the response side); assessment in docs/adapter-parity-8.1.0.md. Verdict: all three pure-streaming properties hold natively (no downstream wrap, streamed bodies get additions only, replaying cached receive); zero code changes.
+- The lockstep engine pin moves with the train: `guardCore` 4.3.2 -> 4.3.3 (gradle/libs.versions.toml + the coordinate mentions), mirroring the guard-core-jvm 4.3.3 parity release. Composite builds substitute the included checkout; the declared coordinate matters only at composite-OFF release time, when the engine 4.3.3 artifacts will be live (the pre-flight gate enforces engine-first).
+
 ### Changed (W8b, release engineering; nothing released)
 
 - Maven coordinates move to groupId `com.guard-core` (the Central Portal namespace; guardcore.com
