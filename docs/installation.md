@@ -10,8 +10,7 @@
 
 ## Coordinates
 
-Not published yet: the first artifact ships with the 1.0.0 release. Until
-then, build from source (below). Once released:
+Published on Maven Central:
 
 ```kotlin
 dependencies {
@@ -24,8 +23,7 @@ packages stay `com.guardcore.*`.
 
 ## Engine dependency (includeBuild + dependency substitution)
 
-The engine artifact `com.guard-core:guard-core` is not on Maven Central until
-the family's first release, so the build pins the engine from source: CI and
+Consumers resolve the engine artifact `com.guard-core:guard-core` from Maven Central. This repository's own build pins the engine from source instead: CI and
 local builds check out `Guard-Core/guard-core-jvm` at the pinned ref `2415a77`
 as the sibling directory `./guard-core-jvm`, and `settings.gradle.kts`
 substitutes the declared coordinates with the included build's projects. The
