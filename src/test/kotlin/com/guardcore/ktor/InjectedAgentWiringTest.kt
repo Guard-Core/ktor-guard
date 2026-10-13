@@ -19,9 +19,9 @@ class InjectedAgentWiringTest {
     val events = mutableListOf<Map<String, Any?>>()
     val metrics = mutableListOf<Map<String, Any?>>()
 
-    override suspend fun initializeRedis(redisHandler: RedisHandlerProtocol) {}
+    override suspend fun initializeRedis(redisHandler: RedisHandlerProtocol) = Unit
 
-    override suspend fun initializeRedis(redisHandler: Any?) {}
+    override suspend fun initializeRedis(redisHandler: Any?) = Unit
 
     override suspend fun sendEvent(event: Map<String, Any?>) {
       events.add(event)
@@ -49,7 +49,7 @@ class InjectedAgentWiringTest {
       stops++
     }
 
-    override suspend fun flushBuffer() {}
+    override suspend fun flushBuffer() = Unit
 
     override suspend fun getDynamicRules(): Any? = null
 
