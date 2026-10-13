@@ -42,8 +42,15 @@ security logic of its own; every decision is the engine's.
 
 ## Install
 
-Not published yet. The first artifact ships with the 1.0.0 release; until then build from source
-(see [Engine dependency](#engine-dependency) and [Development](#development)).
+Published on Maven Central:
+
+```kotlin
+dependencies {
+    implementation("com.guard-core:ktor-guard:1.0.0")
+}
+```
+
+It brings in the engine facade `com.guard-core:guard-core:4.3.3`. To build from source, see [Engine dependency](#engine-dependency) and [Development](#development).
 
 ## Usage
 
@@ -148,7 +155,7 @@ analog), and the pipeline rebuilds when route configs change.
 |---|---|---|
 | `config` | `SecurityConfig` | The engine configuration (required). |
 | `decorator` | `GuardRouteDecorator?` | The per-route configuration surface adopted by the middleware. |
-| `agentHandler` | `AgentHandlerProtocol?` | guard-agent-jvm handler (the agent family artifact ships in W7; until then `enable_agent` degrades like the reference adapter's missing-package path). |
+| `agentHandler` | `AgentHandlerProtocol?` | guard-agent-jvm handler: pass `GuardAgentTelemetry(agent)` from `com.guard-core:guard-agent-jvm` (see its README). Without one, `enable_agent` degrades like the reference adapter's missing-package path. |
 | `connectingIpResolver` | `((ApplicationCall) -> String?)?` | Optional connecting-IP hook (defaults to the engine connection point's remote host). |
 
 The middleware handle is reachable with `application.guardCore().middleware`:
