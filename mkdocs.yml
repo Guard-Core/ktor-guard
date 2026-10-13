@@ -26,3 +26,4 @@ nav:
   - Installation: installation.md
   - API: api.md
   - Examples: examples.md
+  - Parity notes: adapter-parity-8.1.0.md

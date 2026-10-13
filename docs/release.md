@@ -10,7 +10,7 @@ This file covers what differs here.
 - Artifact `com.guard-core:ktor-guard`; version `1.0.0` (fresh family
   version). The version lives in `build.gradle.kts`; the tag must equal it.
 - The engine lockstep pin lives in `gradle/libs.versions.toml` (`guardCore =
-  "4.3.2"`) and in the workflow env (`GUARD_CORE_JVM_REF`); they move only
+  "4.3.3"`) and in the workflow env (`GUARD_CORE_JVM_REF`); they move only
   when the engine train moves.
 - Tags are bare `vX.Y.z` only (`v1.0.0`). The `tag-consistency` job audits
   this (the guard-core-rs invisible-rule incident on `refs/tags/v4.3.2` is
@@ -24,7 +24,7 @@ with an explicit message.
 
 - [ ] `build.gradle.kts`: `version = "1.0.0-SNAPSHOT"` -> `version = "1.0.0"`.
 - [ ] `gradle/libs.versions.toml`: `guardCore` still reads the lockstep engine
-      version (`4.3.2`).
+      version (`4.3.3`).
 - [ ] The `GUARD_CORE_JVM_REF` pin (ci.yml env + settings comments) already
       points at the released engine SHA (bumped at train time, per the
       family spec).
