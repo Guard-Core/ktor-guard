@@ -1,4 +1,5 @@
 site_name: ktor-guard
+site_url: https://guard-core.github.io/ktor-guard/
 site_description: Application-layer security plugin for Ktor 3.x, powered by the guard-core-jvm detection engine
 site_author: Renn F
 repo_url: https://github.com/Guard-Core/ktor-guard
