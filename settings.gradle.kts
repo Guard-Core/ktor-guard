@@ -25,7 +25,7 @@ pluginManagement {
 // included build until the artifacts publish to Maven Central.
 //
 // Layout: the engine checkout sits as a sibling of this repo. CI checks it out
-// with actions/checkout (repository: Guard-Core/guard-core-jvm, ref: 9067b7b,
+// with actions/checkout (repository: Guard-Core/guard-core-jvm, ref: db716ec,
 // path: guard-core-jvm); locally clone it with
 //   git clone https://github.com/Guard-Core/guard-core-jvm ../guard-core-jvm
 // ---------------------------------------------------------------------------
