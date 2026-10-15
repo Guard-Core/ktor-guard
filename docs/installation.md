@@ -24,7 +24,7 @@ packages stay `com.guardcore.*`.
 ## Engine dependency (includeBuild + dependency substitution)
 
 Consumers resolve the engine artifact `com.guard-core:guard-core` from Maven Central. This repository's own build pins the engine from source instead: CI and
-local builds check out `Guard-Core/guard-core-jvm` at the pinned ref `db716ec`
+local builds check out `Guard-Core/guard-core-jvm` at the pinned ref `6cde4af`
 as the sibling directory `./guard-core-jvm`, and `settings.gradle.kts`
 substitutes the declared coordinates with the included build's projects. The
 declared dependency coordinates stay `com.guard-core:guard-core:4.3.3`
@@ -32,7 +32,7 @@ declared dependency coordinates stay `com.guard-core:guard-core:4.3.3`
 
 ```bash
 git clone https://github.com/Guard-Core/guard-core-jvm.git guard-core-jvm
-git -C guard-core-jvm checkout db716ec
+git -C guard-core-jvm checkout 6cde4af
 ./gradlew build
 ```
 

@@ -15,7 +15,7 @@ concurrency:
 env:
   # The engine ref ktor-guard pins (lockstep 4.3.3; settings.gradle.kts builds it from
   # source). Bump this and the settings comment together with a facade upgrade.
-  GUARD_CORE_JVM_REF: db716ec0a038fa3dd0a145211bf6a1f18c178d03
+  GUARD_CORE_JVM_REF: 6cde4afd08a0172c5f6a41eb8e29ec754288782e
 
 jobs:
   build:

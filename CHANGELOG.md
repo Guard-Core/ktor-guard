@@ -7,6 +7,7 @@ All notable changes to this project are documented in this file. The format foll
 
 ### Changed
 
+- The pinned guard-core-jvm engine ref moves to 6cde4af (guard-core-jvm master, the 4.4.0 line), so CI tests the engine code that ships in 4.4.0. It adds the empty-whitelist fix (an empty global whitelist now means no whitelist, guard-core-jvm#57) on top of db716ec. The lockstep `guardCore` version stays 4.3.3 until 4.4.0 is on Maven Central.
 - The pinned guard-core-jvm engine ref moves to db716ec, which carries the detection scan budget, semantic header handling and cookie split (guard-core-jvm#53) and the dynamic rules overlay (guard-core-jvm#55).
 - The pinned guard-core-jvm engine ref moves to 9067b7b, which fixes the agent telemetry wiring (Guard-Core/guard-core-jvm#48): an injected guard-agent-jvm handler was never added to the engine composite, so it was never started and received no events, and metrics travelled as events. A new `InjectedAgentWiringTest` covers the injected handler end to end (start, events, metrics, stop).
 - Dependencies: netty is pinned to 4.1.139.Final through `platform(io.netty:netty-bom)`. lettuce-core 6.8.2 declares netty 4.1.125, which carries twelve advisories fixed by 4.1.137 at the latest. The pin is declared here as well as in the guard-core-jvm facade, so this lockfile stays the same whichever engine revision the build resolves. All twelve netty osv-scanner suppressions are removed.
