@@ -569,20 +569,20 @@
 <h2 id="coordinates">Coordinates</h2>
 <p>Published on Maven Central:</p>
 <div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">"com.guard-core:ktor-guard:1.0.0"</span><span class="p">)</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="s">"com.guard-core:ktor-guard:1.1.0"</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 <p>The group ID is <code>com.guard-core</code> (the Central Portal namespace); Kotlin
 packages stay <code>com.guardcore.*</code>.</p>
 <h2 id="engine-dependency-includebuild-dependency-substitution">Engine dependency (includeBuild + dependency substitution)</h2>
 <p>Consumers resolve the engine artifact <code>com.guard-core:guard-core</code> from Maven Central. This repository's own build pins the engine from source instead: CI and
-local builds check out <code>Guard-Core/guard-core-jvm</code> at the pinned ref <code>6cde4af</code>
+local builds check out <code>Guard-Core/guard-core-jvm</code> at the pinned ref <code>7711606</code>
 as the sibling directory <code>./guard-core-jvm</code>, and <code>settings.gradle.kts</code>
 substitutes the declared coordinates with the included build's projects. The
 declared dependency coordinates stay <code>com.guard-core:guard-core:4.3.3</code>
 (lockstep version per the family versioning law).</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Guard-Core/guard-core-jvm.git<span class="w"> </span>guard-core-jvm
-git<span class="w"> </span>-C<span class="w"> </span>guard-core-jvm<span class="w"> </span>checkout<span class="w"> </span>6cde4af
+git<span class="w"> </span>-C<span class="w"> </span>guard-core-jvm<span class="w"> </span>checkout<span class="w"> </span><span class="m">7711606</span>
 ./gradlew<span class="w"> </span>build
 </code></pre></div>
 <p>The engine directory resolves in order: <code>-PguardCoreJvmDir=&lt;path&gt;</code>,
