@@ -24,9 +24,9 @@ on:
 permissions: {}
 
 env:
-  # The engine ref ktor-guard pins (lockstep 4.3.3; settings.gradle.kts builds it from
+  # The engine ref ktor-guard pins (lockstep 4.4.0; settings.gradle.kts builds it from
   # source). Bump this and the settings comment together with a facade upgrade.
-  GUARD_CORE_JVM_REF: 6cde4afd08a0172c5f6a41eb8e29ec754288782e
+  GUARD_CORE_JVM_REF: 77116062fc7d88dcb610b1f588e2bc78e63848ad
 
 jobs:
   pre-flight:
