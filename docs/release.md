@@ -12,15 +12,15 @@ This file covers what differs here.
 - The engine lockstep pin lives in `gradle/libs.versions.toml` (`guardCore =
   "4.3.3"`) and in the workflow env (`GUARD_CORE_JVM_REF`); they move only
   when the engine train moves.
-- Tags are bare `vX.Y.z` only (`v1.0.0`). The `tag-consistency` job audits
+- Tags are bare `vX.Y.z` only (`v1.0.0`). The `verify` job of release.yml audits
   this (the guard-core-rs invisible-rule incident on `refs/tags/v4.3.2` is
   the standing lesson).
 - groupId `com.guard-core`; Kotlin packages stay `com.guardcore.*`.
 
 ## Version-flip checklist (the release PR)
 
-The workflow enforces this: tagging without the flip fails `tag-consistency`
-with an explicit message.
+The workflow enforces this: releasing a tag without the flip fails the
+`verify` job with an explicit message.
 
 - [ ] `build.gradle.kts`: `version = "1.0.0-SNAPSHOT"` -> `version = "1.0.0"`.
 - [ ] `gradle/libs.versions.toml`: `guardCore` still reads the lockstep engine
@@ -44,10 +44,15 @@ mechanically, not on the honor system).
    deployments released, repo1 answering 200 for both engine artifacts
    (engine docs/release.md, steps 1 and 5).
 2. Merge the version-flip PR.
-3. Tag: `git tag v1.0.0 && git push origin v1.0.0`. Gates run in order:
-   pre-flight (engine live) -> tests at tag (composite ON, same as ci.yml) ->
-   tag-consistency (bare tag equals the in-file version).
-4. Create the GitHub release for `v1.0.0`. The publish job:
+3. Tag: `git tag v1.0.0 && git push origin v1.0.0`. The tag push runs
+   nothing: the merge commit's push run of ci.yml (build and tests against the
+   pinned engine, dependency audit) is the gate.
+4. Create the GitHub release for `v1.0.0`. release.yml runs no build or
+   test for validation. The `verify` job checks the tag is bare `vX.Y.z`,
+   equals the in-file version (and is not a SNAPSHOT), and that the newest
+   push run of ci.yml on the tagged commit succeeded (it waits up to an hour
+   for runs still in progress). The pre-flight job then requires both engine
+   artifacts live on Maven Central. Then the publish job:
    - verifies the four secrets are set (Portal user token + GPG key);
    - checks repo1 for this exact artifact and skips if already live
      (changed-only rerun safety);
@@ -69,12 +74,13 @@ mechanically, not on the honor system).
 3. No deployment left VALIDATED/PENDING in the Portal.
 4. The `GUARD_CORE_JVM_REF` pin (ci.yml env + settings comments) moves to
    the released engine SHA AT TRAIN TIME, before the consumer tags: the
-   adapter's at-tag tests must run against the engine that actually ships
+   adapter's push CI must run against the engine that actually ships
    (the family spec pins this; a pin bump is an ordinary development PR).
 
 ## Rerun safety, failure recovery, rollback
 
-Same rules as the engine runbook: workflow_dispatch re-drives skip anything
-already live on repo1; a VALIDATED deployment you do not want gets Dropped in
+Same rules as the engine runbook: a workflow_dispatch re-drive (Actions >
+Release > Run workflow, `tag` input) checks that tag out with master's current
+workflow and skips anything already live on repo1; a VALIDATED deployment you do not want gets Dropped in
 the Portal; published artifacts are immutable - no rollback after the Portal
 Release click, only a fix version.
