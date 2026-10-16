@@ -23,7 +23,7 @@ pinned ref:
 
 ```bash
 git clone https://github.com/Guard-Core/guard-core-jvm ../guard-core-jvm
-git -C ../guard-core-jvm checkout 6cde4af
+git -C ../guard-core-jvm checkout 7711606
 ./gradlew build          # detekt + ktfmt check + tests
 ```
 
