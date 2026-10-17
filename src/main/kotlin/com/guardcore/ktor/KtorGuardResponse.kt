@@ -1,5 +1,6 @@
 package com.guardcore.ktor
 
+import com.guardcore.protocols.BoundedResponseBodyReader
 import com.guardcore.protocols.GuardResponse
 import com.guardcore.protocols.GuardResponseFactory
 import io.ktor.http.ContentType
@@ -18,7 +19,7 @@ import io.ktor.server.response.respondBytes
 public class KtorGuardResponse(
     override val statusCode: Int,
     bodyBytes: ByteArray,
-) : GuardResponse {
+) : GuardResponse, BoundedResponseBodyReader {
   /** Python `create_response` shape: string content. */
   public constructor(
       statusCode: Int,
@@ -35,6 +36,10 @@ public class KtorGuardResponse(
 
   override val body: ByteArray
     get() = currentBody
+
+  /** Python `read_body_prefix` (adapters.py:131): empty when a streaming body was left unread. */
+  override suspend fun readBodyPrefix(maxBytes: Int): ByteArray =
+      currentBody.copyOf(minOf(maxBytes, currentBody.size))
 
   /** The response-exit path materializes a live view over the outgoing content. */
   internal fun overrideBody(bytes: ByteArray) {

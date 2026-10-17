@@ -3,6 +3,12 @@
 All notable changes to this project are documented in this file. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## Unreleased
+
+### Fixed
+
+- Body based `return_pattern` behavior rules now evaluate: `KtorGuardResponse` implements `BoundedResponseBodyReader`, returning a bounded prefix of the materialized body (empty when a streaming body was left unread). Before, the engine could never read the response body in this adapter, so such rules never triggered.
+
 ## [1.1.0] - 2026-10-16
 
 ### Changed
