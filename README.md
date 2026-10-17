@@ -26,13 +26,13 @@ ___
 
 ## Status
 
-`1.1.0`, released on Maven Central as `com.guard-core:ktor-guard:1.1.0`. ktor-guard is a true port of
+`1.1.1`, released on Maven Central as `com.guard-core:ktor-guard:1.1.1`. ktor-guard is a true port of
 the guard adapter pattern (fastapi-guard's `SecurityMiddleware`, JVM-idiomized for Ktor 3.x):
 it wraps Ktor `ApplicationCall` into the guard-core-jvm facade protocols and drives the engine's
 security pipeline per request through suspend-native Ktor server plugin hooks. It contains no
 security logic of its own; every decision is the engine's.
 
-- Engine: `com.guard-core:guard-core:4.3.3` (built from source through a composite build, see
+- Engine: `com.guard-core:guard-core:4.4.0` (built from source through a composite build, see
   [Engine dependency](#engine-dependency)).
 - Ktor 3.x (built and tested against 3.6.0), Kotlin 2.4.21, JDK 17, suspend-native: the facade's
   suspend APIs are called directly (no runBlocking bridges on this adapter).
@@ -46,11 +46,11 @@ Published on Maven Central:
 
 ```kotlin
 dependencies {
-    implementation("com.guard-core:ktor-guard:1.1.0")
+    implementation("com.guard-core:ktor-guard:1.1.1")
 }
 ```
 
-It brings in the engine facade `com.guard-core:guard-core:4.3.3`. To build from source, see [Engine dependency](#engine-dependency) and [Development](#development).
+It brings in the engine facade `com.guard-core:guard-core:4.4.0`. To build from source, see [Engine dependency](#engine-dependency) and [Development](#development).
 
 ## Usage
 
@@ -168,7 +168,7 @@ ktor-guard contains no security logic; the engine lives in
 [Guard-Core/guard-core-jvm](https://github.com/Guard-Core/guard-core-jvm) and is built from
 source through a composite build (`includeBuild` + dependency substitution in
 `settings.gradle.kts`, the Gradle analog of the Rust path+version pattern). Declared coordinates
-stay `com.guard-core:guard-core:4.3.3` (lockstep with the guard-core 4.3.3 release); substitution
+stay `com.guard-core:guard-core:4.4.0` (lockstep with the guard-core 4.4.0 release); substitution
 redirects them to the included build until the artifacts publish to Maven Central.
 
 CI checks the engine out at the pinned ref as a sibling (`path: guard-core-jvm`); locally use
