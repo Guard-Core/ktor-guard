@@ -6,7 +6,7 @@ pluginManagement {
 }
 
 // ---------------------------------------------------------------------------
-// Engine dependency (com.guard-core:guard-core:4.3.3) via composite build.
+// Engine dependency (com.guard-core:guard-core:4.4.0) via composite build.
 //
 // GUARD_CORE_USE_COMPOSITE (environment variable):
 //   unset / "1" / "true"  -> composite ON (default, dev + CI-with-pin).
@@ -18,10 +18,10 @@ pluginManagement {
 // ktor-guard contains no security logic: the engine lives in
 // Guard-Core/guard-core-jvm and is built from source here through includeBuild
 // + dependency substitution (the Gradle analog of the Rust path+version
-// pattern). Declared coordinates stay com.guard-core:guard-core:4.3.3 and
-// com.guard-core:guard-core-engine:4.3.3 (groupId com.guard-core is the
+// pattern). Declared coordinates stay com.guard-core:guard-core:4.4.0 and
+// com.guard-core:guard-core-engine:4.4.0 (groupId com.guard-core is the
 // Central Portal namespace; Kotlin packages stay com.guardcore.*; lockstep
-// with the guard-core 4.3.3 release); substitution redirects them to the
+// with the guard-core 4.4.0 release); substitution redirects them to the
 // included build until the artifacts publish to Maven Central.
 //
 // Layout: the engine checkout sits as a sibling of this repo. CI checks it out

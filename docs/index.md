@@ -8,8 +8,8 @@ engine's security pipeline per request through suspend-native Ktor server
 plugin hooks. It contains no security logic of its own; every decision is the
 engine's.
 
-- **Status**: 1.0.0, released (the first synchronized release)
-- **Engine**: `com.guard-core:guard-core:4.3.3` (built from source through a
+- **Status**: 1.1.1, released
+- **Engine**: `com.guard-core:guard-core:4.4.0` (built from source through a
   composite build, see [Installation](installation.md))
 - **Stack**: Ktor 3.x (built and tested against 3.6.0), Kotlin 2.4.21, JDK 17,
   suspend-native (the facade's suspend APIs are called directly)
