@@ -14,7 +14,7 @@ Published on Maven Central:
 
 ```kotlin
 dependencies {
-    implementation("com.guard-core:ktor-guard:1.1.0")
+    implementation("com.guard-core:ktor-guard:1.1.1")
 }
 ```
 

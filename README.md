@@ -26,7 +26,7 @@ ___
 
 ## Status
 
-`1.1.0`, released on Maven Central as `com.guard-core:ktor-guard:1.1.0`. ktor-guard is a true port of
+`1.1.1`, released on Maven Central as `com.guard-core:ktor-guard:1.1.1`. ktor-guard is a true port of
 the guard adapter pattern (fastapi-guard's `SecurityMiddleware`, JVM-idiomized for Ktor 3.x):
 it wraps Ktor `ApplicationCall` into the guard-core-jvm facade protocols and drives the engine's
 security pipeline per request through suspend-native Ktor server plugin hooks. It contains no
@@ -46,7 +46,7 @@ Published on Maven Central:
 
 ```kotlin
 dependencies {
-    implementation("com.guard-core:ktor-guard:1.1.0")
+    implementation("com.guard-core:ktor-guard:1.1.1")
 }
 ```
 
