@@ -3,7 +3,7 @@ kotlin = "2.4.21"
 coroutines = "1.11.0"
 ktor = "3.6.0"
 guardCore = "4.4.0"
-netty = "4.1.139.Final"
+netty = "4.2.19.Final"
 spotless = "8.10.4"
 detekt = "1.23.8"
 
